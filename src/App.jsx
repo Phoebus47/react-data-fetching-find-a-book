@@ -38,11 +38,15 @@ function App() {
 
   const optimizedFn = useCallback(debounce(findBooks), []);
 
+  const handleSearch = (e) => {
+    optimizedFn(e.target.value);
+  };
+
   return (
     <div className="App">
       <h2>Find a book</h2>
       <div className="search">
-        <input type="text" onChange={(e) => optimizedFn(e.target.value)} />
+        <input type="text" onChange={handleSearch} />
       </div>
       <ul>
         {books.map((book) => (
